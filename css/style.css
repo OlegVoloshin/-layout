@@ -1,0 +1,201 @@
+*{
+    box-sizing: border-box;
+}
+a{
+     /* ссылки без  подчеркивания*/
+    text-decoration: none;
+    /* ссылки всегда строчно-блочные */
+    display: inline-block;
+}
+ul,
+li{
+    /* убрали маркеры */
+    list-style: none; 
+    margin: 0;
+    padding: 0;
+}
+/* будет хранить всю инфо и центрироваться */
+.container{
+    /* не просто ширину, a max , чтобы при уменьшении экрана не появился нижний скролл */
+    max-width: 1170px;
+    margin: 0 auto; /* центрируем */
+    padding: 0 15px; /* резервируем отступ для устроиств меньше 1170рх*/
+}
+body{
+    font-family: 'PT Serif', serif; /* постоянный шрифт*/
+    font-weight: 400;
+    font-size: 14px; /* размер шрифта*/
+    line-height: 18px; /* высота строки*/
+    color: #5e5e5e; /* цвет шрифта*/
+
+}
+header{
+    font-family: 'Roboto', sans-serif;
+}
+.header__top{
+    background-color: #303030;
+}
+.header__btn{
+    float: right; /* справа центрирование*/
+    line-height: 36px;
+    color: #1b1b1b;
+    background-color: #ffc222;
+    padding: 5px 20px 4px 50px;
+    font-size: 16px;
+    position: relative;
+}
+.header__btn::before{
+    content: "\f0b1";
+    font-family: 'icomoon';
+    position: absolute; /* задали абсолютную позицию относительно родительского класса .header__phone*/
+    left: 22px;
+    color: #1b1b1b;
+}
+.header__contacts:after{
+    content: "";
+    clear: both;
+    display: block;
+}
+.header__phone, .header__email{
+    color: #cbcacb;
+    font-size: 14px;
+    letter-spacing: 0.25px;
+    line-height: 45px;
+    position: relative;/* задали родительские обьекты, чтобы иконки относительно них позиционировались методом absolute*/
+}
+.header__phone{
+    padding-left: 20px;
+    padding-right: 30px;
+}
+.header__phone::before{
+    content: "\f095";
+    font-family: 'icomoon';
+    position: absolute; /* задали абсолютную позицию относительно родительского класса .header__phone*/
+    left: 0;
+    color: #ffc222;
+}
+.header__email{
+    padding-left: 24px;
+}
+.header__email::before{
+    content: "\f003";
+    font-family: 'icomoon';
+    position: absolute; /* задали абсолютную позицию относительно родительского класса .header__phone*/
+    left: 0;
+    color: #ffc222;
+}
+.header__content{
+    padding: 34px 0px 23px;
+}
+.header__content__inner{
+    display: flex;
+    justify-content: space-between;
+}
+.menu li{
+    display: inline-block;/* чтобы список был в одну строку*/
+}
+.menu a{
+    color: #323232;
+    font-size: 16px;
+    line-height: 36px;
+    border: 1px solid transparent; /* задаем размер и цвет бордера*/  
+    transition: all 0.3s;
+}
+.menu a:hover{ /*при нажатии мышкой появляется бордет(псевдокласс :hover)*/
+    border-color: #ffc222;
+}
+.menu li + li{
+    padding-left: 10px; /* сделали 10рх между li*/
+}
+#modal{   /* стиль для всплывающего окна bnt в header*/
+    display: none;
+}
+.slider{
+    background-image: url(../img/slider-fon.jpg);
+    background-repeat: no-repeat; /* чтобы картинка не размножалась*/
+    background-size: cover; /* чтобы растягивалась картинка*/
+    background-position: center;
+    min-height: 500px;/* если контент будет увеличиваться чтобы картинка имела все равно мин высоту*/
+}
+.slider_item_content{
+    text-align: center;/* текст по центру*/
+    padding-top: 110px;
+    max-width: 665px;
+    margin: 0 auto; /* центрируем*/
+}
+.slider_title{
+    text-transform: uppercase;/* текст с верхним регистром*/
+    font-size: 30px;
+    line-height: 36px;
+    color: #fff;
+    font-weight: 500;
+    letter-spacing: 1px;/* расстояние между буквами*/
+    margin-bottom: 22px;
+    font-family: 'Roboto', sans-serif;
+}
+.slider__text{
+    line-height: 24px;
+    font-size: 18px;
+    color: #d3d2d2;
+    margin-bottom: 50px;
+}
+.default-btn{
+    display: inline-block;
+    font-size: 14px;
+    line-height: 24px;
+    color: #fff;
+    font-weight: 500;
+    font-family: 'Roboto', sans-serif;
+    padding: 8px 30px 8px 24px;
+    border: 1px solid #ffc222;
+    border-right-width: 20px;/* делаем отступ справа для бордер ограждение*/
+    position: relative;
+    outline: none;
+    
+}
+.default-btn::after{
+    content: "\f105";/* берем из fonts.css*/
+    font-family: 'icomoon';
+    position: absolute; /* позиция относительно revative*/
+    top: 50%;/* чтобы кнопка всегда центрировалась вериткально*/
+    transform: translateY(-50%);/*приподнимим кнопку на 50% тк position работает от края линии, Y ось координат, те вверх*/
+    right: -12px; /* -12 тк выходит за границы бордер*/
+}
+.slider__inner{
+    position: relative;
+}
+.slick-btn{
+    position: absolute;
+    top: 70%;
+    z-index: 3;/*для контейнера. Контейнер по умолчанию z ось =0; при наложении элементов мы индекс задаем выше чем у контейнера и кнопка работает на клик мыши*/
+    width: 40px;
+    height: 40px;
+    border: 1px solid #fff;    
+    cursor: pointer;/* чтобы курсор менялся при наведении на человеческую руку*/
+    outline: none;
+    background-color: #ffc222;
+}
+.slick-btn.slick-disabled{   /* slick-disabled посмотрел в инспекторе, появляется когда на кнопку не возможно нажать(карусель закончилась) этот класс свойств мы сделали чтобы когда было не возможно нажать на кнопку курсор был по умолчанию и фон не был желтым*/
+    cursor: default;
+    background-color: transparent; /* цвет кнопок прозрачный*/
+}
+.slick-btn::after{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /*по обеим осям х и y задаем позицию*/
+    font-family: 'icomoon';
+    color: #fff;
+}
+.slick-next::after{
+    content: "\f105";    
+}
+.slick-prev::after{
+    content: "\f104";
+}
+.slick-next{
+    right: 0;
+}
+.slick-prev{
+    left: 0;
+}
